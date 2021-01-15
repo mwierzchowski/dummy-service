@@ -75,7 +75,7 @@ Prerequisites
 Project requires following components being installed on a developer's machine:  
 
 Tool                                                                              | Minimal Version    | Comment
-----------------------------------------------------------------------------------|--------------------|--------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------|--------------------|---------------------------------------------------------------------------
 [Git](https://git-scm.com/)                                                       | `latest`           | 
 [JDK](https://adoptopenjdk.net/archive.html?variant=openjdk14&jvmVariant=hotspot) | `15`               | AdoptOpenJDK is recommended. Newer versions may have problems with Groovy! 
 [Docker Desktop](https://www.docker.com/products/docker-desktop)                  | `2.4`              |
@@ -86,7 +86,7 @@ Notepad :) However, if one decides to use IntelliJ, following plugins will be ve
 available too):
 
 Plugin                                                                    | Comment
---------------------------------------------------------------------------|-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------|----------------------------------------------------------------------
 [Lombok](https://plugins.jetbrains.com/plugin/6317-lombok)                | Support for Lombok generated code
 [MapStruct](https://plugins.jetbrains.com/plugin/10036-mapstruct-support) | Support for MapStruct generated code
 [SonarLint](https://plugins.jetbrains.com/plugin/7973-sonarlint)          | Quality feedback on the fly 
@@ -149,7 +149,7 @@ Project build is powered by Gradle (wrapper included). Most build tasks are prov
 documentation. Most useful tasks:
 
 Task          | Description
---------------|---------------------------------------------------------------------------------------------------------
+--------------|----------------------------------------------------------------------------------------------
 `clean`       | Cleans the build
 `test`        | Executes unit and integration tests
 `build`       | Builds the application (with tests execution)
