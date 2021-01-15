@@ -28,6 +28,7 @@ Project template is composed of the following tools:
 - [PostgreSQL](https://www.postgresql.org)
 - [Redis](https://redislabs.com)
 - [Springdoc-OpenAPI](https://springdoc.org)
+- [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
 - [Liquibase](https://www.liquibase.org)
 - [Spock Framework](http://spockframework.org)
 - [WireMock](http://wiremock.org)
