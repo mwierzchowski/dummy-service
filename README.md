@@ -19,6 +19,7 @@ Project template is composed of the following tools:
 - [Spring Boot Admin](https://github.com/codecentric/spring-boot-admin)
 - [Spring MVC](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
+- [Spring Data Redis](https://spring.io/projects/spring-data-redis)
 - [Java Validation Framework (JSR 380)](https://beanvalidation.org/2.0-jsr380/)
 - [Lombok](https://projectlombok.org)
 - [MapStruct](https://mapstruct.org)
