@@ -35,7 +35,7 @@ jobs:
 
       - name: Artifacts definition
         run: |
-          echo "IMAGE=$ORGANIZATION/$PROJECT" >> $GITHUB_ENV
+          echo "IMAGE=${ORGANIZATION}/${PROJECT}" >> $GITHUB_ENV
           echo "CANDIDATE=rc" >> $GITHUB_ENV
           echo "FINAL=$(./gradlew printVersion -q --console=plain)" >> $GITHUB_ENV
 
