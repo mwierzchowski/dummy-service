@@ -106,10 +106,6 @@ jacocoTestReport {
 	}
 }
 
-jacoco {
-	toolVersion = "0.8.6" // todo temporary fix until Gradle 6.8 (hopefully) upgrades Jacoco version
-}
-
 task sunriseSunsetGenerate(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
 	def sourcesRoot = "$buildDir/generated/sources/sunrise-sunset"
 	inputSpec = "$rootDir/specs/sunrise-sunset-spec.yml"
