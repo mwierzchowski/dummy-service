@@ -1,0 +1,18 @@
+# Logging levels
+logging.level:
+  ${project.group}: DEBUG
+
+decorator.datasource.p6spy.enable-logging: true
+spring.boot.admin.client.enabled: false
+
+spring.datasource.url: 'jdbc:postgresql://localhost:\${embedded.postgresql.port}/dev?currentSchema=${schemaName}'
+
+spring.redis:
+  port: '\${embedded.redis.port}'
+  password: '\${embedded.redis.password}'
+
+# Application specific
+dummy:
+  checker.cron: '-'
+  publisher.cron: '-'
+  sunrise-sunset.path: 'http://localhost:\${wiremock.server.port}/sunrise-sunset'

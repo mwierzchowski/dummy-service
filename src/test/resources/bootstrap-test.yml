@@ -1,0 +1,7 @@
+embedded.postgresql:
+  dockerImage: postgres:13.1-alpine
+  database: dev
+  user: dev
+  password: dev
+
+embedded.redis.dockerImage: redis:6.0.9-alpine

@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:13.1-alpine
+    networks:
+      dev_network:
+        aliases: [database]
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=dev
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev
+    volumes:
+      - database_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.0.9-alpine
+    networks:
+      dev_network:
+        aliases: [cache]
+    ports:
+      - 6379:6379
+
+  pg-admin4:
+    image: dpage/pgadmin4:latest
+    networks:
+      dev_network:
+    ports:
+      - 81:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@localhost
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./pgadmin4.json:/pgadmin4/servers.json:ro
+
+  spring-boot-admin:
+    image: slydeveloper/spring-boot-admin:latest
+    ports:
+      - 82:1111
+    environment:
+      - spring_boot_admin_security_enabled=true
+      - spring_security_user_name=admin
+      - spring_security_user_password=admin
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui:latest
+    ports:
+      - 83:8080
+    environment:
+      - URL=http://localhost:8080/v3/api-docs
+
+volumes:
+  database_data:
+  pgadmin_data:
+
+networks:
+  dev_network:
