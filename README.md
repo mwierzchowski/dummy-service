@@ -166,10 +166,9 @@ Development Environment
 -----------------------
 
 Development environment once started (see above) is configured to expose following components as local services:
-- PostgreSQL on `localhost:5432` (`dev` / `dev`)
 - [pgAdmin](http://localhost:81) (`admin@localhost` / `admin`) 
 - [Spring Boot Admin](http://localhost:82) (`admin` / `admin`)
-- [Swagger](http://localhost:83/swagger)
+- [Swagger UI](http://localhost:83/swagger)
 
 Additionally, this project integrates with following cloud services that are essential during development process:
 - [SonarCloud](https://sonarcloud.io/projects)
