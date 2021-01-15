@@ -13,9 +13,7 @@ covers also CI/CD workflows and integration with a quality scan.
 
 ### Bill of Materials
 Project template is composed of the following tools:
-- [GitHub Actions](https://github.com/features/actions)
 - [Gradle](https://gradle.org)
-- [SonarCloud](https://sonarcloud.io)
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)
 - [Spring Boot Admin](https://github.com/codecentric/spring-boot-admin)
@@ -30,10 +28,12 @@ Project template is composed of the following tools:
 - [Redis](https://redislabs.com)
 - [Springdoc-OpenAPI](https://springdoc.org)
 - [Liquibase](https://www.liquibase.org)
-- [Docker](https://www.docker.com) 
 - [Spock Framework](http://spockframework.org)
 - [WireMock](http://wiremock.org)
 - [Testcontainers](https://www.testcontainers.org) and [Playtika](https://github.com/Playtika/testcontainers-spring-boot)
+- [GitHub Actions](https://github.com/features/actions)
+- [SonarCloud](https://sonarcloud.io)
+- [Docker](https://www.docker.com) 
 
 For the full list of libraries/dependencies see the [build.gradle](build.gradle).
 
