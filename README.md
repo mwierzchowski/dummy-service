@@ -165,7 +165,8 @@ For example, following command starts application after a clean build:
 Development Environment
 -----------------------
 
-Development environment once started (see above) is configured to expose following components as local services:
+Development environment is configured to expose following components as local services (links take you to your local
+instances after you start dev env with Docker Compose - see above):
 - [pgAdmin](http://localhost:81) (`admin@localhost` / `admin`) 
 - [Spring Boot Admin](http://localhost:82) (`admin` / `admin`)
 - [Swagger UI](http://localhost:83/swagger)
