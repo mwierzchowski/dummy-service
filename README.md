@@ -113,6 +113,9 @@ Setup
 1. Check if correct JDK is configured in IDE (see Prerequisites). Correct if needed.
 1. Check if project compiles (in IntelliJ click 'green hummer' icon in the top).
 
+**Please note:** first run for GitHub Actions may fail due to some issue on GitHub side. If that's the case, re-run it
+one more time (or twice).
+
 ### SonarCloud Integration (quality scans)
 
 1. Enable (if not already) integration between GitHub and SonarCloud (consider enabling integration for all
@@ -120,7 +123,7 @@ Setup
 1. [Configure new project](https://sonarcloud.io/projects/create) analyze in SonarCloud (choose *GitHub Actions* as
    an analysis method).
 1. Add to GitHub repository secret `SONAR_TOKEN` (use values provided by SonarCloud). 
-1. Change in `build.gradle` values of `sonar.organization` and `sonar.projectKey` (use values provided by SonarCloud). 
+1. Change in `build.gradle` values of `sonar.organization` and `sonar.projectKey` (use values provided by SonarCloud).
 
 ### Docker Hub Integration
 
