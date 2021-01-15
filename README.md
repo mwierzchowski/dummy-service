@@ -149,13 +149,13 @@ Project build is powered by Gradle (wrapper included). Most build tasks are prov
 documentation. Most useful tasks:
 
 Task          | Description
---------------|--------------------------------------------------
+--------------|---------------------------------------------------------------------------------------------------------
 `clean`       | Cleans the build
-`build`       | Builds the application (with tests execution)
 `test`        | Executes unit and integration tests
+`build`       | Builds the application (with tests execution)
 `composeUp`   | Starts local development environment (e.g. RDBMS, Swagger UI) as Docker Compose services
 `composeDown` | Stops local development environment (all the data is wiped, including database content)
-`bootRun`     | Starts application (requires local development environment to be up and running)  
+`bootRun`     | Builds and starts application (requires local development environment to be up and running)  
 
 For example, following command starts application after a clean build:
 ```
