@@ -1,13 +1,37 @@
 Dummy Service
 =============
 
+> **TODO** - This section has to be updated in cloned project
+
 This is a template project for [Spring Boot](https://spring.io/projects/spring-boot) based microservices. It's goal is
 to simplify starting a new project with popular features ready out of the box and nothing more. Since this project is
 simplified, without additional changes it is rather intended for internal (not public API) or hobby projects. Template
 covers also CI/CD workflows and integration with a quality scan.
 
+### But Why?
+
+> **TODO** - This section has to be removed in cloned project
+
+One may ask: *Why not to use [Spring Initializr](https://start.spring.io) or [JHipster](https://www.jhipster.tech)
+instead of the template?* Well, there are few reasons...
+1. I am really picky when it comes to code standards (see above). Initializr and JHipster are both great tools
+   (actually, this project was initially started with Initializr) but after using them I always find myself
+   correcting tons of small *imperfections* here and there.
+1. Initializr does not support [Spock](http://spockframework.org) which is my favourite tests framework.
+1. JHipster generates lots of *super-must-have-cloud-code* (after all, its hipster stuff ;-)). It is great when you try
+   to spin a startup, but in many cases it is superfluous for small - internal or hobby - projects.
+1. Both tools do not cover CI/CD workflows.
+
+Another interesting question: *Why not to use one of [zillion](https://github.com/search?q=spring+boot+template)
+(actually, around 2-3k) template projects available on the GitHub?* Indeed, some of them could be close to my needs
+but...
+1. I started one of my hobby projects as monolith and just later decided to cut it into microservice pieces. So I had
+   a need for a template similar as much as possible to the original project's structure to avoid extra effort.
+1. Creating this template was an interesting exercise.
+1. Did I mention I am picky? Even good templates do not cover all of my requirements.
+
 ### Bill of Materials
-Project template is composed of the following tools:
+Project is composed of the following tools:
 - [Gradle](https://gradle.org)
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)
@@ -32,10 +56,10 @@ Project template is composed of the following tools:
 - [SonarCloud](https://sonarcloud.io)
 - [Docker](https://www.docker.com) 
 
-For the full list of libraries/dependencies see the [build.gradle](build.gradle).
+For the full list see the [build.gradle](build.gradle).
 
 ### Code Standards
-Project's structure, naming convention and to some degree design were inspired by:
+Project structure, naming convention and to some degree design were inspired by:
 - [Onion](https://www.codeguru.com/csharp/csharp/cs_misc/designtechniques/understanding-onion-architecture.html) / 
   [Clean](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) /
   [Hexagonal](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)) Architecture
@@ -44,32 +68,11 @@ Project's structure, naming convention and to some degree design were inspired b
 If one wants to read more about combining all these together, 
 [here](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
 is an interesting article.
-
-But Why?
---------
-
-One may ask: *Why not to use [Spring Initializr](https://start.spring.io) or [JHipster](https://www.jhipster.tech)
-instead of the template?* Well, there are few reasons...
-1. I am really picky when it comes to code standards (see above). Initializr and JHipster are both great tools
-   (actually, this project was initially started with Initializr) but after using them I always find myself
-   correcting tons of small *imperfections* here and there. 
-1. Initializr does not support [Spock](http://spockframework.org) which is my favourite tests framework.
-1. JHipster generates lots of *super-must-have-cloud-code* (after all, its hipster stuff ;-)). It is great when you try
-   to spin a startup, but in many cases it is superfluous for small - internal or hobby - projects.
-1. Both tools do not cover CI/CD workflows.
-
-Another interesting question: *Why not to use one of [zillion](https://github.com/search?q=spring+boot+template)
-(actually, around 2-3k) template projects available on the GitHub?* Indeed, some of them could be close to my needs
-but...
-1. I started one of my hobby projects as monolith and just later decided to cut it into microservice pieces. So I had
-   a need for a template similar as much as possible to the original project's structure to avoid extra effort.
-1. Creating this template was an interesting exercise.
-1. Did I mention I am picky? Even good templates do not cover all of my requirements.
-   
+ 
 Prerequisites
 -------------
 
-Project requires following components being installed on developer's machine:  
+Project requires following components being installed on a developer's machine:  
 
 Tool                                                                              | Minimal Version    | Comment
 ----------------------------------------------------------------------------------|--------------------|---------------------------------------------------------------------------
@@ -95,6 +98,8 @@ highlighted as errors if one does not have installed corresponding plugins.
 Setup
 -----
 
+> **TODO** - This section has to be removed in cloned project
+
 ### Clone project
 
 **Please note:** One should already have GitHub account.
@@ -102,18 +107,20 @@ Setup
 1. [Create a new repository from this template](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
 1. Import/clone project to IDE (when asked, enable all suggested supports/toolkits, e.g. annotation processing).
 1. Change application's root package and application main class (`DummyApplication`).
-1. Change application group and description in `build.gradle` (both marked with TODO flags)
+1. Update `build.gradle`
+    1. Change application group and description.
+    1. Reload Gradle project.
+1. Update README
+    1. Update or remove sections marked with TODO flag 
+    1. Add CI/CD badge to README (GitHub Actions / CICD Workflow / '3 dots button')
+    1. Change license (if needed).
 1. Check if there are no TODO flags left in the project code.
-1. Reload Gradle project.
-1. Update README (at least project name)
-1. Add CI/CD badge to README (GitHub Actions / CICD Workflow / '3 dots button')
-1. Change license (if needed).
 1. Push changes to GitHub.
 
 ### SonarCloud Integration
 
 **Please note:** One should already have [SonarCloud](https://sonarcloud.io) account authorized as an application in
-GitHub. Additionally, CI/CD script assumes that one logs to SonarCloud with GitHub account. 
+GitHub. Additionally, CI/CD script assumes that one logs to SonarCloud with GitHub account.
 
 1. Add [new project analyze](https://sonarcloud.io/projects/create) in SonarCloud (choose *GitHub Actions* as
    an analysis method).
@@ -122,6 +129,7 @@ GitHub. Additionally, CI/CD script assumes that one logs to SonarCloud with GitH
     1. 'Quality Gate Status'
     1. 'Lines of Code'
     1. 'Coverage'
+1. In SonarCloud define new code based on a previous version (Administration / New Code).
 1. Push changes to GitHub. 
 
 ### DockerHub Integration
