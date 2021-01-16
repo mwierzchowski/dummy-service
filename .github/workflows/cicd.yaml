@@ -11,8 +11,6 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     outputs:
-      image: ${{ env.IMAGE }}
-      version-candidate: ${{ env.CANDIDATE }}
       version-final: ${{ env.FINAL }}
     steps:
       - name: Checkout code
@@ -101,8 +99,6 @@ jobs:
     steps:
       - name: Publish release
         env:
-          IMAGE: ${{needs.Build.outputs.image}}
-          CANDIDATE: ${{needs.Build.outputs.version-candidate}}
           FINAL: ${{needs.Build.outputs.version-final}}
         run: |
           echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u $ORGANIZATION --password-stdin
