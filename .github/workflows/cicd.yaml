@@ -3,6 +3,8 @@ on: push
 env:
   ORGANIZATION: ${{ github.repository_owner }}
   PROJECT: ${{ github.event.repository.name }}
+  IMAGE: ${{ github.repository_owner }}/${{ github.event.repository.name }}
+  CANDIDATE: rc
   JAVA: 1.15
 
 jobs:
@@ -34,10 +36,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Build image
-        run: |
-          echo "IMAGE=${ORGANIZATION}/${PROJECT}" >> $GITHUB_ENV
-          echo "CANDIDATE=rc" >> $GITHUB_ENV
-          ./gradlew bootBuildImage --imageName=$IMAGE:$CANDIDATE --console=plain
+        run: ./gradlew bootBuildImage --imageName=$IMAGE:$CANDIDATE --console=plain
 
       - name: Publish candidate
         if: startsWith(github.ref, 'refs/tags/')
