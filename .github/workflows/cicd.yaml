@@ -6,8 +6,34 @@ env:
   JAVA: 1.15
 
 jobs:
+  Warm-up:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ env.JAVA }}
+
+      - name: Restore Gradle cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Download dependencies
+        run: ./gradlew
+
   Build:
     runs-on: ubuntu-latest
+    needs:
+      - Warm-up
     outputs:
       image: ${{ env.IMAGE }}
       version-candidate: ${{ env.CANDIDATE }}
@@ -23,7 +49,7 @@ jobs:
         with:
           java-version: ${{ env.JAVA }}
 
-      - name: Cache Gradle dependencies
+      - name: Restore Gradle cache
         uses: actions/cache@v2
         with:
           path: |
@@ -50,6 +76,8 @@ jobs:
 
   Test:
     runs-on: ubuntu-latest
+    needs:
+      - Warm-up
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -61,7 +89,7 @@ jobs:
         with:
           java-version: ${{ env.JAVA }}
 
-      - name: Cache Gradle dependencies
+      - name: Restore Gradle cache
         uses: actions/cache@v2
         with:
           path: |
@@ -71,7 +99,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Cache SonarCloud packages
+      - name: Restore SonarCloud cache
         uses: actions/cache@v2
         with:
           path: ~/.sonar/cache
