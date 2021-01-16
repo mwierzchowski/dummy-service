@@ -1,11 +1,5 @@
 Dummy Service
 =============
-![CI/CD](https://github.com/mwierzchowski/dummy-service/workflows/CI/CD/badge.svg)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mwierzchowski_dummy-service&metric=alert_status)](https://sonarcloud.io/dashboard?id=mwierzchowski_dummy-service)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=mwierzchowski_dummy-service&metric=ncloc)](https://sonarcloud.io/dashboard?id=mwierzchowski_dummy-service)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=mwierzchowski_dummy-service&metric=coverage)](https://sonarcloud.io/dashboard?id=mwierzchowski_dummy-service)
-
-> TODO replace badges!
 
 This is a template project for [Spring Boot](https://spring.io/projects/spring-boot) based microservices. It's goal is
 to simplify starting a new project with popular features ready out of the box and nothing more. Since this project is
@@ -101,7 +95,7 @@ highlighted as errors if one does not have installed corresponding plugins.
 Setup
 -----
 
-### Create project
+### Clone project
 
 **Please note:** One should already have GitHub account.
 
@@ -111,7 +105,8 @@ Setup
 1. Change application group and description in `build.gradle` (both marked with TODO flags)
 1. Check if there are no TODO flags left in the project code.
 1. Reload Gradle project.
-1. Change README.md (at least project name)
+1. Update README (at least project name)
+1. Add CI/CD badge to README (GitHub Actions / CICD Workflow / '3 dots button')
 1. Change license (if needed).
 1. Push changes to GitHub.
 
@@ -123,6 +118,11 @@ GitHub. Additionally, CI/CD script assumes that one logs to SonarCloud with GitH
 1. Add [new project analyze](https://sonarcloud.io/projects/create) in SonarCloud (choose *GitHub Actions* as
    an analysis method).
 1. Copy SonarCloud token and add to GitHub repository secrets as `SONAR_TOKEN`.
+1. Add SonarCloud badges to README (SonarCloud project home page, lower right corner): 
+    1. 'Quality Gate Status'
+    1. 'Lines of Code'
+    1. 'Coverage'
+1. Push changes to GitHub. 
 
 ### DockerHub Integration
 
@@ -131,6 +131,7 @@ assumes that both GitHub and DockerHub share the same account id.
 
 1. Create new DockerHub [repository](https://hub.docker.com/repositories).
 1. Add DockerHub password to GitHub repository secrets as `DOCKERHUB_PASSWORD`.
+1. Service image will be published to DockerHub on the next release.
 
 Usage
 -----
