@@ -5,7 +5,7 @@ Dummy Service
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=mwierzchowski_dummy-service&metric=ncloc)](https://sonarcloud.io/dashboard?id=mwierzchowski_dummy-service)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=mwierzchowski_dummy-service&metric=coverage)](https://sonarcloud.io/dashboard?id=mwierzchowski_dummy-service)
 
-> TODO replace badges
+> TODO replace badges!
 
 This is a template project for [Spring Boot](https://spring.io/projects/spring-boot) based microservices. It's goal is
 to simplify starting a new project with popular features ready out of the box and nothing more. Since this project is
