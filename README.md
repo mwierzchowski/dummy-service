@@ -47,9 +47,9 @@ Project's structure, naming convention and to some degree design were inspired b
   [Hexagonal](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)) Architecture
 - [Domain Driven Design (DDD)](https://en.wikipedia.org/wiki/Domain-driven_design)
 
-If you want to read more about combining all these together, 
+If one wants to read more about combining all these together, 
 [here](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
-you can find an interesting article.
+is an interesting article.
 
 But Why?
 --------
@@ -75,7 +75,7 @@ but...
 Prerequisites
 -------------
 
-Project requires following components being installed on a developer's machine:  
+Project requires following components being installed on developer's machine:  
 
 Tool                                                                              | Minimal Version    | Comment
 ----------------------------------------------------------------------------------|--------------------|---------------------------------------------------------------------------
@@ -98,54 +98,45 @@ Plugin                                                                    | Comm
 **Please note:** References to generated code (e.g. Lombok properties or MapStruct mappers) in most current IDEs is
 highlighted as errors if one does not have installed corresponding plugins.
 
-Project also requires registration in the following cloud services (consider registration with the GitHub credentials):
-- [SonarCloud](https://sonarcloud.io)
-- [Docker Hub](https://hub.docker.com)
-
-**Please note:** For simplicity, account names in both services are assumed to be the same, and match project's
-*organization*. 
-
 Setup
 -----
 
 ### Create project
 
-1. [Create new microservice project from the template](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
-1. Clone project on your dev machine.
-1. Import project to IDE (if asked, enable all suggested supports/toolkits, e.g. annotation processing).
-1. Check if correct JDK is configured in IDE (see Prerequisites). Correct if needed.
-1. Check if project compiles (in IntelliJ click 'green hummer' icon in the top).
+**Please note:** One should already have GitHub account.
 
-### SonarCloud Integration (quality scans)
-
-1. Enable (if not already) integration between GitHub and SonarCloud (consider enabling integration for all
-   the future projects).
-1. [Configure new project](https://sonarcloud.io/projects/create) analyze in SonarCloud (choose *GitHub Actions* as
-   an analysis method).
-1. Add to GitHub repository secret `SONAR_TOKEN` (use values provided by SonarCloud). 
-1. Change in `build.gradle` values of `sonar.organization` and `sonar.projectKey` (use values provided by SonarCloud).
-
-### Docker Hub Integration
-
-1. Create Docker Hub [repository](https://hub.docker.com/repositories).
-1. Add to GitHub repository secret `DOCKERHUB_PASSWORD`.
-
-### Customize Project
-
-1. Rename application's root package.
-1. Rename `DummyApplication` to the name of your app.
-1. Change build config (see `TODO` in `build.gradle`) and reload project in IDE (go to *Gradle* tab and choose to
-   reload).
-1. Fix `TODO` statements (see *TODO* tab, usually in the bottom).
-1. Fix README.md (e.g. remove references to the dummy project).
+1. [Create a new repository from this template](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
+1. Import/clone project to IDE (when asked, enable all suggested supports/toolkits, e.g. annotation processing).
+1. Change application's root package and application main class (`DummyApplication`).
+1. Change application group and description in `build.gradle` (both marked with TODO flags)
+1. Check if there are no TODO flags left in the project code.
+1. Reload Gradle project.
+1. Change README.md (at least project name)
 1. Change license (if needed).
 1. Push changes to GitHub.
+
+### SonarCloud Integration
+
+**Please note:** One should already have [SonarCloud](https://sonarcloud.io) account authorized as an application in
+GitHub. Additionally, CI/CD script assumes that one logs to SonarCloud with GitHub account. 
+
+1. Add [new project analyze](https://sonarcloud.io/projects/create) in SonarCloud (choose *GitHub Actions* as
+   an analysis method).
+1. Copy SonarCloud token and add to GitHub repository secrets as `SONAR_TOKEN`.
+
+### DockerHub Integration
+
+**Please note:** One should already have [DockerHub](https://hub.docker.com) account. Additionally, CI/CD script
+assumes that both GitHub and DockerHub share the same account id.
+
+1. Create new DockerHub [repository](https://hub.docker.com/repositories).
+1. Add DockerHub password to GitHub repository secrets as `DOCKERHUB_PASSWORD`.
 
 Usage
 -----
 
 Project build is powered by Gradle (wrapper included). Most build tasks are provided by `java`, `spring-boot` and
-`docker-compose` plugins. If you are not familiar with those plugins (and their tasks) please check corresponding
+`docker-compose` plugins. If one is not familiar with those plugins (and their tasks) please check corresponding
 documentation. Most useful tasks:
 
 Task          | Description
@@ -165,15 +156,11 @@ For example, following command starts application after a clean build:
 Development Environment
 -----------------------
 
-Development environment is configured to expose following components as local services (links take you to your local
-instances after you start dev env with Docker Compose - see above):
+Local development environment is provided with the code by Docker Compose. Once started, following services are
+available on the localhost with the preconfigured accounts:
 - [pgAdmin](http://localhost:81) (`admin@localhost` / `admin`) 
 - [Spring Boot Admin](http://localhost:82) (`admin` / `admin`)
 - [Swagger UI](http://localhost:83/swagger)
-
-Additionally, this project integrates with following cloud services that are essential during development process:
-- [SonarCloud](https://sonarcloud.io/projects)
-- [DockerHub](https://hub.docker.com)
 
 License
 -------

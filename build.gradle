@@ -15,8 +15,8 @@ plugins {
 
 version = gitVersion()
 sourceCompatibility = 15
-group = "com.github.mwierzchowski.dummy" // TODO update
-description = "Template project for microservices" // TODO update
+group = "com.github.mwierzchowski.dummy" // TODO change group name
+description = "Template project for microservices" // TODO change service description
 
 repositories {
 	mavenCentral()
