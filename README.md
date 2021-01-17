@@ -82,12 +82,12 @@ Prerequisites
 
 Project requires following components being installed on a developer's machine:  
 
-Tool                                                                              | Version            | Comment
-----------------------------------------------------------------------------------|--------------------|---------------------------------------------------------------------------
-[Git](https://git-scm.com/)                                                       | `latest`           | 
-[JDK](https://adoptopenjdk.net/archive.html?variant=openjdk14&jvmVariant=hotspot) | `15`               | AdoptOpenJDK is recommended 
-[Docker Desktop](https://www.docker.com/products/docker-desktop)                  | `2.4` or newer     |
-Favourite IDE                                                                     | `latest`           | [IntelliJ IDEA](https://www.jetbrains.com/idea/) is recommended 
+Tool                                                             | Version        | Comment
+-----------------------------------------------------------------|----------------|----------------------------------------------------------------------------------------------------------
+[Git](https://git-scm.com/)                                      | `latest`       | 
+JDK                                                              | `15`           | [AdoptOpenJDK](https://adoptopenjdk.net/archive.html?variant=openjdk14&jvmVariant=hotspot) is recommended 
+IDE                                                              | `latest`       | [IntelliJ IDEA](https://www.jetbrains.com/idea/) is recommended 
+[Docker Desktop](https://www.docker.com/products/docker-desktop) | `2.4` or newer |
 
 **Please note:** Project does not depend on IntelliJ IDEA specific features. Feel free to use [Eclipse](https://www.eclipse.org)
 or Notepad instead :)
