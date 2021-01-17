@@ -87,10 +87,10 @@ Tool                                                                            
 [Git](https://git-scm.com/)                                                       | `latest`           | 
 [JDK](https://adoptopenjdk.net/archive.html?variant=openjdk14&jvmVariant=hotspot) | `15`               | AdoptOpenJDK is recommended 
 [Docker Desktop](https://www.docker.com/products/docker-desktop)                  | `2.4` or newer     |
-Favourite IDE, e.g. [IntelliJ IDEA](https://www.jetbrains.com/idea/)              | `latest`           | 
+Favourite IDE                                                                     | `latest`           | [IntelliJ IDEA](https://www.jetbrains.com/idea/) is recommended 
 
-**Please note:** Project does not depend on any IntelliJ IDEA specific feature. Feel free to use instead
-[Eclipse](https://www.eclipse.org) or Notepad :)
+**Please note:** Project does not depend on IntelliJ IDEA specific features. Feel free to use [Eclipse](https://www.eclipse.org)
+or Notepad instead :)
 
 Optionally, consider installing IDE plugins that improve development experience. Recommended plugins should have
 versions available for most popular IDEs (IntelliJ links below):
