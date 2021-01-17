@@ -28,7 +28,7 @@ import static org.mapstruct.ReportingPolicy.IGNORE;
 @RequestMapping("/v1/dummy")
 @Tag(name = "Dummy", description = "Dummy resource")
 @Transactional
-public class DummyController {
+public class DummyControllerV1 {
     private final DummyMapper mapper = Mappers.getMapper(DummyMapper.class);
     private final DummyRepository repository;
     private final DummyChecker checker;

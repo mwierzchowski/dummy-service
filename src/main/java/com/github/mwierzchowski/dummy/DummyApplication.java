@@ -17,7 +17,7 @@ import java.time.Clock;
 @EnableJpaAuditing
 @EnableTransactionManagement
 @SpringBootApplication
-public class DummyApplication { // TODO rename application and the root package
+public class DummyApplication {
 	@Bean
 	Clock systemClock() {
 		return Clock.systemDefaultZone();
