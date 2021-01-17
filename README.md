@@ -8,7 +8,7 @@ to simplify starting a new project with popular features ready out of the box an
 simplified, without additional changes it is rather intended for internal (not public API) or hobby projects. Template
 covers also CI/CD workflows and integration with a quality scan.
 
-### But Why?
+### But why?
 
 > **TODO** - This section has to be removed in cloned project
 
@@ -30,11 +30,12 @@ but...
 1. Creating this template was an interesting exercise.
 1. Did I mention I am picky? Even good templates do not cover all of my requirements.
 
-### Bill of Materials
+### Bill of materials
 Project is composed of the following tools:
 - [Gradle](https://gradle.org)
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)
+- [Spring Boot Dev Tools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools)  
 - [Spring Boot Admin](https://github.com/codecentric/spring-boot-admin)
 - [Spring MVC](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
@@ -58,7 +59,7 @@ Project is composed of the following tools:
 
 For the full list see the [build.gradle](build.gradle).
 
-### Code Standards
+### Code standards
 Project structure, naming convention and to some degree design were inspired by:
 - [Onion](https://www.codeguru.com/csharp/csharp/cs_misc/designtechniques/understanding-onion-architecture.html) / 
   [Clean](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) /
@@ -95,29 +96,30 @@ Plugin                                                                    | Comm
 **Please note:** References to generated code (e.g. Lombok properties or MapStruct mappers) in most current IDEs is
 highlighted as errors if one does not have installed corresponding plugins.
 
-Setup
------
+Project setup
+------------
 
 > **TODO** - This section has to be removed in cloned project
 
-### Clone project
+### Clone repository
 
 **Please note:** One should already have GitHub account.
 
 1. [Create a new repository from this template](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
 1. Import/clone project to IDE (when asked, enable all suggested supports/toolkits, e.g. annotation processing).
-1. Change application's root package and application main class (`DummyApplication`).
 1. Update `build.gradle`
     1. Change application group and description.
     1. Reload Gradle project.
 1. Update README
     1. Update or remove sections marked with TODO flag 
-    1. Add CI/CD badge to README (GitHub Actions / CICD Workflow / '3 dots button')
-    1. Change license (if needed).
-1. Check if there are no TODO flags left in the project code.
+    1. Optional - add CI/CD badge to README (GitHub Actions / CICD Workflow / '3 dots button')
+    1. Optional - change license.
 1. Push changes to GitHub.
 
-### SonarCloud Integration
+**Please note:** Later on, while working on actual service logic, rename application root package, main class and all
+other *Dummy* classes/resources.
+
+### SonarCloud integration
 
 **Please note:** One should already have [SonarCloud](https://sonarcloud.io) account authorized as an application in
 GitHub. Additionally, CI/CD script assumes that one logs to SonarCloud with GitHub account.
@@ -125,14 +127,14 @@ GitHub. Additionally, CI/CD script assumes that one logs to SonarCloud with GitH
 1. Add [new project analyze](https://sonarcloud.io/projects/create) in SonarCloud (choose *GitHub Actions* as
    an analysis method).
 1. Copy SonarCloud token and add to GitHub repository secrets as `SONAR_TOKEN`.
-1. Add SonarCloud badges to README (SonarCloud project home page, lower right corner): 
+1. Optional - add SonarCloud badges to README (SonarCloud project home page, lower right corner): 
     1. 'Quality Gate Status'
     1. 'Lines of Code'
     1. 'Coverage'
 1. In SonarCloud define new code based on a previous version (Administration / New Code).
 1. Push changes to GitHub. 
 
-### DockerHub Integration
+### DockerHub integration
 
 **Please note:** One should already have [DockerHub](https://hub.docker.com) account. Additionally, CI/CD script
 assumes that both GitHub and DockerHub share the same account id.
@@ -141,35 +143,64 @@ assumes that both GitHub and DockerHub share the same account id.
 1. Add DockerHub password to GitHub repository secrets as `DOCKERHUB_PASSWORD`.
 1. Service image will be published to DockerHub on the next release.
 
-Usage
------
+How to run...
+-------------
 
-Project build is powered by Gradle (wrapper included). Most build tasks are provided by `java`, `spring-boot` and
-`docker-compose` plugins. If one is not familiar with those plugins (and their tasks) please check corresponding
-documentation. Most useful tasks:
+### Build
 
-Task          | Description
---------------|----------------------------------------------------------------------------------------------
-`clean`       | Cleans the build
-`test`        | Executes unit and integration tests
-`build`       | Builds the application (with tests execution)
-`composeUp`   | Starts local development environment (e.g. RDBMS, Swagger UI) as Docker Compose services
-`composeDown` | Stops local development environment (all the data is wiped, including database content)
-`bootRun`     | Builds and starts application (requires local development environment to be up and running)  
+Project build is powered by [Gradle wrapper](https://gradle.org) with additional plugins (e.g. `java`, `spring-boot`,
+`docker-compose`). Few most useful build tasks:
+- `clean` - cleans the build
+- `test` - executes unit and integration tests
+- `build` - builds the application (and executes tests)
 
-For example, following command starts application after a clean build:
+For example, following command runs a clean build:
 ```
-./gradlew clean composeUp bootRun 
+./gradlew clean build 
 ```
 
-Development Environment
------------------------
+### Dev tools
 
-Local development environment is provided with the code by Docker Compose. Once started, following services are
-available on the localhost with the preconfigured accounts:
-- [pgAdmin](http://localhost:81) (`admin@localhost` / `admin`) 
-- [Spring Boot Admin](http://localhost:82) (`admin` / `admin`)
-- [Swagger UI](http://localhost:83/swagger)
+Development tools are provided as a code by Docker Compose. They may be controlled with standard docker commands
+or using Gradle tasks:
+- `composeUp` - starts development tools as Docker Compose services (waits until services are up and running)
+- `composeDown` - stops development tools (all the data is wiped, including database content)
+
+For example, following command starts development tools:
+```
+./gradlew composeUp 
+```
+
+Once started, following services are available:
+
+Service                                                               | URL                         | Credentials
+----------------------------------------------------------------------|-----------------------------|----------------------------
+[PostgreSQL](https://www.postgresql.org)                              | http://localhost:5432       | `dev` / `dev`
+[Redis](https://redislabs.com)                                        | http://localhost:6379       | N/A
+[pgAdmin](https://www.pgadmin.org)                                    | http://localhost:81         | `admin@localhost` / `admin` 
+[Spring Boot Admin](https://github.com/codecentric/spring-boot-admin) | http://localhost:82         | `admin` / `admin`
+[Swagger UI](https://swagger.io/tools/swagger-ui/)                    | http://localhost:83/swagger | N/A 
+
+### Application
+
+Service, as a regular Spring Boot application may be started locally by running main application class or using Gradle
+task:
+- `bootRun` - starts application (compiles and builds code if needed)
+
+Since application to start requires development tools to be up and running, one may combine Gradle tasks to launch
+complete development environment with a single command:
+```
+./gradlew composeUp bootRun 
+```
+
+Once started, application listens on http://localhost:8080. Status of the running application can be checked using one
+of the Actuator endpoints, e.g.:
+- http://localhost:8080/actuator/info - general info
+- http://localhost:8080/actuator/health - health status
+
+Project includes [spring-boot-devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools)
+"*that can make the application development experience a little more pleasant*", e.g. provides code changes detection
+and automatic restarts.
 
 License
 -------
