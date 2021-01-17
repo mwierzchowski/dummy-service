@@ -1,7 +1,7 @@
 Dummy Service
 =============
 
-> **TODO** - This section has to be updated in cloned project
+> **TODO** - This section should be updated in a cloned project
 
 This is a template project for [Spring Boot](https://spring.io/projects/spring-boot) based microservices. It's goal is
 to simplify starting a new project with popular features ready out of the box and nothing more. Since this project is
@@ -10,7 +10,7 @@ covers also CI/CD workflows and integration with a quality scan.
 
 ### But why?
 
-> **TODO** - This section has to be removed in cloned project
+> **TODO** - This section should be removed in a cloned project
 
 One may ask: *Why not to use [Spring Initializr](https://start.spring.io) or [JHipster](https://www.jhipster.tech)
 instead of the template?* Well, there are few reasons...
@@ -75,16 +75,18 @@ Prerequisites
 
 Project requires following components being installed on a developer's machine:  
 
-Tool                                                                              | Minimal Version    | Comment
+Tool                                                                              | Version            | Comment
 ----------------------------------------------------------------------------------|--------------------|---------------------------------------------------------------------------
 [Git](https://git-scm.com/)                                                       | `latest`           | 
-[JDK](https://adoptopenjdk.net/archive.html?variant=openjdk14&jvmVariant=hotspot) | `15`               | AdoptOpenJDK is recommended. Newer versions may have problems with Groovy! 
-[Docker Desktop](https://www.docker.com/products/docker-desktop)                  | `2.4`              |
-[IntelliJ IDEA](https://www.jetbrains.com/idea/)                                  | `latest`           | Ultimate version would be helpful but it is not required
+[JDK](https://adoptopenjdk.net/archive.html?variant=openjdk14&jvmVariant=hotspot) | `15`               | AdoptOpenJDK is recommended 
+[Docker Desktop](https://www.docker.com/products/docker-desktop)                  | `2.4` or newer     |
+Favourite IDE, e.g. [IntelliJ IDEA](https://www.jetbrains.com/idea/)              | `latest`           | 
 
-Actually, **IntelliJ IDEA is only recommended**. Feel free to replace it with [Eclipse](https://www.eclipse.org) or
-Notepad :) However, if one decides to use IntelliJ, following plugins will be vey handy (Eclipse versions should be
-available too):
+**Please note:** Project does not depend on any IntelliJ IDEA specific feature. Feel free to use instead
+[Eclipse](https://www.eclipse.org) or Notepad :)
+
+Optionally, consider installing IDE plugins that improve development experience. Recommended plugins should have
+versions available for most popular IDEs (IntelliJ links below):
 
 Plugin                                                                    | Comment
 --------------------------------------------------------------------------|----------------------------------------------------------------------
@@ -93,20 +95,20 @@ Plugin                                                                    | Comm
 [SonarLint](https://plugins.jetbrains.com/plugin/7973-sonarlint)          | Quality feedback on the fly 
 [Docker](https://plugins.jetbrains.com/plugin/7724-docker)                | Support for docker-compose (handy when starting application locally)
 
-**Please note:** References to generated code (e.g. Lombok properties or MapStruct mappers) in most current IDEs is
-highlighted as errors if one does not have installed corresponding plugins.
+**Please note:** Without some of these plugins, IDEs may highlight references to generated code (e.g. Lombok properties
+or MapStruct mappers) as errors. It is annoying but do not affect building or running application.
 
 Project setup
-------------
+-------------
 
-> **TODO** - This section has to be removed in cloned project
+> **TODO** - This section should be removed in a cloned project
 
 ### Clone repository
 
 **Please note:** One should already have GitHub account.
 
 1. [Create a new repository from this template](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
-1. Import/clone project to IDE (when asked, enable all suggested supports/toolkits, e.g. annotation processing).
+1. Import/clone project to IDE
 1. Update `build.gradle`
     1. Change application group and description.
     1. Reload Gradle project.
@@ -116,8 +118,8 @@ Project setup
     1. Optional - change license.
 1. Push changes to GitHub.
 
-**Please note:** Later on, while working on actual service logic, rename application root package, main class and all
-other *Dummy* classes/resources.
+**Please note:** Application root package, and many of the template classes/resources hold *dummy* label. It is
+recommended to change these names after a project setup.
 
 ### SonarCloud integration
 
@@ -128,10 +130,10 @@ GitHub. Additionally, CI/CD script assumes that one logs to SonarCloud with GitH
    an analysis method).
 1. Copy SonarCloud token and add to GitHub repository secrets as `SONAR_TOKEN`.
 1. Optional - add SonarCloud badges to README (SonarCloud project home page, lower right corner): 
-    1. 'Quality Gate Status'
-    1. 'Lines of Code'
-    1. 'Coverage'
-1. In SonarCloud define new code based on a previous version (Administration / New Code).
+    1. Quality Gate Status
+    1. Lines of Code
+    1. Coverage
+1. In SonarCloud, define new code based on a previous version (Administration / New Code).
 1. Push changes to GitHub. 
 
 ### DockerHub integration
@@ -176,10 +178,10 @@ Once started, following services are available:
 Service                                                               | URL                         | Credentials
 ----------------------------------------------------------------------|-----------------------------|----------------------------
 [PostgreSQL](https://www.postgresql.org)                              | http://localhost:5432       | `dev` / `dev`
-[Redis](https://redislabs.com)                                        | http://localhost:6379       | N/A
+[Redis](https://redislabs.com)                                        | http://localhost:6379       | NA
 [pgAdmin](https://www.pgadmin.org)                                    | http://localhost:81         | `admin@localhost` / `admin` 
 [Spring Boot Admin](https://github.com/codecentric/spring-boot-admin) | http://localhost:82         | `admin` / `admin`
-[Swagger UI](https://swagger.io/tools/swagger-ui/)                    | http://localhost:83/swagger | N/A 
+[Swagger UI](https://swagger.io/tools/swagger-ui/)                    | http://localhost:83/swagger | NA 
 
 ### Application
 
@@ -188,7 +190,7 @@ task:
 - `bootRun` - starts application (compiles and builds code if needed)
 
 Since application to start requires development tools to be up and running, one may combine Gradle tasks to launch
-complete development environment with a single command:
+complete development environment with a single command, e.g.:
 ```
 ./gradlew composeUp bootRun 
 ```
