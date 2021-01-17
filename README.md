@@ -1,7 +1,14 @@
 Dummy Service
 =============
 
-> **TODO** - This section should be updated in a cloned project
+![CI/CD](https://github.com/mwierzchowski/dummy-service/workflows/CI/CD/badge.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mwierzchowski_dummy-service&metric=alert_status)](https://sonarcloud.io/dashboard?id=mwierzchowski_dummy-service)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=mwierzchowski_dummy-service&metric=ncloc)](https://sonarcloud.io/dashboard?id=mwierzchowski_dummy-service)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=mwierzchowski_dummy-service&metric=coverage)](https://sonarcloud.io/dashboard?id=mwierzchowski_dummy-service)
+
+> **TODO** - In cloned project, remove badge URLs above (replace instructions in the setup section)  
+> 
+> **TODO** - In cloned project, update description 
 
 This is a template project for [Spring Boot](https://spring.io/projects/spring-boot) based microservices. It's goal is
 to simplify starting a new project with popular features ready out of the box and nothing more. Since this project is
@@ -10,7 +17,7 @@ covers also CI/CD workflows and integration with a quality scan.
 
 ### But why?
 
-> **TODO** - This section should be removed in a cloned project
+> **TODO** - In cloned project, remove this section
 
 One may ask: *Why not to use [Spring Initializr](https://start.spring.io) or [JHipster](https://www.jhipster.tech)
 instead of the template?* Well, there are few reasons...
@@ -101,7 +108,7 @@ or MapStruct mappers) as errors. It is annoying but do not affect building or ru
 Project setup
 -------------
 
-> **TODO** - This section should be removed in a cloned project
+> **TODO** - In cloned project, remove this section
 
 ### Clone repository
 
