@@ -19,7 +19,7 @@ spring.boot.admin.client:
 
 # Logging levels
 logging.level:
-  root: INFO
+  root: WARN
   ${project.group}: INFO
 
 # Disable Groovy templates

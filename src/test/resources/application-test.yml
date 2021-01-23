@@ -1,5 +1,6 @@
 # Logging levels
 logging.level:
+  root: INFO
   ${project.group}: DEBUG
 
 decorator.datasource.p6spy.enable-logging: true

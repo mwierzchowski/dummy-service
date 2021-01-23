@@ -1,0 +1,4 @@
+# Logging levels
+logging.level:
+  root: INFO
+  ${project.group}: DEBUG

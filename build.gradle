@@ -125,3 +125,7 @@ task sunriseSunsetGenerate(type: org.openapitools.generator.gradle.plugin.tasks.
 dockerCompose {
 	projectName = project.name
 }
+
+bootRun {
+	environment = ["spring.profiles.active": "debug"]
+}
