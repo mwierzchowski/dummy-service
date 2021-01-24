@@ -54,6 +54,7 @@ resilience4j.retry.instances:
 
 # Application
 dummy:
+  init-on-startup: true
   sunrise-sunset.path: 'https://api.sunrise-sunset.org:443'
   location:
     latitude: 52.23
