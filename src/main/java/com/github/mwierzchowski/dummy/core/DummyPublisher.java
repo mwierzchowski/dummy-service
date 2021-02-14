@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class DummyPublisher {
-    public final static String LOCK = "dummy:publisher";
+    public static final String LOCK = "dummy:publisher";
 
     private final DummyChecker checker;
     private final RedisTemplate<String, Object> redis;
