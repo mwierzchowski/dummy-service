@@ -1,4 +1,4 @@
-package com.github.mwierzchowski.dummy.ext;
+package com.github.mwierzchowski.dummy.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

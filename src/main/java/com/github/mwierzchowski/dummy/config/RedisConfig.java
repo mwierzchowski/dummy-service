@@ -1,4 +1,4 @@
-package com.github.mwierzchowski.dummy.ext;
+package com.github.mwierzchowski.dummy.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.mwierzchowski.dummy.core.DummyLogger;

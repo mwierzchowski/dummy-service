@@ -5,10 +5,10 @@ import spock.lang.Specification
 import spock.lang.Subject
 
 @Integration
-class DummyApplicationSpec extends Specification {
+class ApplicationSpec extends Specification {
     @Subject
     @Autowired
-    DummyApplication application
+    Application application
 
     def "Application should start"() {
         expect:
