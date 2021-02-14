@@ -59,4 +59,4 @@ checker:
 publisher:
   init-on-startup: true
   cron: '0 * * * * *'
-  channel: 'sunset-task'
+  channel: 'dummy:sunset-tasks'
