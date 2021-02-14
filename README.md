@@ -37,12 +37,11 @@ but...
 1. Creating this template was an interesting exercise.
 1. Did I mention I am picky? Even good templates do not cover all of my requirements.
 
-### Bill of materials
-Project is composed of the following tools:
+### Toolchain
 - [Gradle](https://gradle.org)
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)
-- [Spring Boot Dev Tools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools)  
+- [Spring Boot Dev Tools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools)
 - [Spring Boot Admin](https://github.com/codecentric/spring-boot-admin)
 - [Spring MVC](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
@@ -62,51 +61,23 @@ Project is composed of the following tools:
 - [Testcontainers](https://www.testcontainers.org) and [Playtika](https://github.com/Playtika/testcontainers-spring-boot)
 - [GitHub Actions](https://github.com/features/actions)
 - [SonarCloud](https://sonarcloud.io)
-- [Docker](https://www.docker.com) 
+- [Docker](https://www.docker.com)
 
 For the full list see the [build.gradle](build.gradle).
 
-### Code standards
-Project structure, naming convention and to some degree design were inspired by:
-- [Onion](https://www.codeguru.com/csharp/csharp/cs_misc/designtechniques/understanding-onion-architecture.html) / 
+### Architecture
+Design, code structure and naming convention were inspired by:
+- [Onion](https://www.codeguru.com/csharp/csharp/cs_misc/designtechniques/understanding-onion-architecture.html) /
   [Clean](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) /
   [Hexagonal](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)) Architecture
 - [Domain Driven Design (DDD)](https://en.wikipedia.org/wiki/Domain-driven_design)
 
-If one wants to read more about combining all these together, 
+If one wants to read more about combining all these together,
 [here](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
 is an interesting article.
- 
-Prerequisites
--------------
 
-Project requires following components being installed on a developer's machine:  
-
-Tool                                                             | Version        | Comment
------------------------------------------------------------------|----------------|----------------------------------------------------------------------------------------------------------
-[Git](https://git-scm.com/)                                      | `latest`       | 
-JDK                                                              | `15`           | [AdoptOpenJDK](https://adoptopenjdk.net/archive.html?variant=openjdk14&jvmVariant=hotspot) is recommended 
-IDE                                                              | `latest`       | [IntelliJ IDEA](https://www.jetbrains.com/idea/) is recommended 
-[Docker Desktop](https://www.docker.com/products/docker-desktop) | `2.4` or newer |
-
-**Please note:** Project does not depend on IntelliJ IDEA specific features. Feel free to use [Eclipse](https://www.eclipse.org)
-or Notepad instead :)
-
-Optionally, consider installing IDE plugins that improve development experience. Recommended plugins should have
-versions available for most popular IDEs (IntelliJ links below):
-
-Plugin                                                                    | Comment
---------------------------------------------------------------------------|----------------------------------------------------------------------
-[Lombok](https://plugins.jetbrains.com/plugin/6317-lombok)                | Support for Lombok generated code
-[MapStruct](https://plugins.jetbrains.com/plugin/10036-mapstruct-support) | Support for MapStruct generated code
-[SonarLint](https://plugins.jetbrains.com/plugin/7973-sonarlint)          | Quality feedback on the fly 
-[Docker](https://plugins.jetbrains.com/plugin/7724-docker)                | Support for docker-compose (handy when starting application locally)
-
-**Please note:** Without some of these plugins, IDEs may highlight references to generated code (e.g. Lombok properties
-or MapStruct mappers) as errors. It is annoying but do not affect building or running application.
-
-Project setup
--------------
+Project Setup From Template
+---------------------------
 
 > **TODO** - In cloned project, remove this section
 
@@ -117,12 +88,12 @@ Project setup
 1. [Create a new repository from this template](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
 1. Import/clone project to IDE
 1. Update `build.gradle`
-    1. Change application group and description.
-    1. Reload Gradle project.
+   1. Change application group and description.
+   1. Reload Gradle project.
 1. Update README
-    1. Update or remove sections marked with TODO flag 
-    1. Optional - add CI/CD badge to README (GitHub Actions / CICD Workflow / '3 dots button')
-    1. Optional - change license.
+   1. Update or remove sections marked with TODO flag
+   1. Optional - add CI/CD badge to README (GitHub Actions / CICD Workflow / '3 dots button')
+   1. Optional - change license.
 1. Push changes to GitHub.
 
 **Please note:** Application root package, and many of the template classes/resources hold *dummy* label. It is
@@ -136,12 +107,12 @@ GitHub. Additionally, CI/CD script assumes that one logs to SonarCloud with GitH
 1. Add [new project analyze](https://sonarcloud.io/projects/create) in SonarCloud (choose *GitHub Actions* as
    an analysis method).
 1. Copy SonarCloud token and add to GitHub repository secrets as `SONAR_TOKEN`.
-1. Optional - add SonarCloud badges to README (SonarCloud project home page, lower right corner): 
-    1. Quality Gate Status
-    1. Lines of Code
-    1. Coverage
+1. Optional - add SonarCloud badges to README (SonarCloud project home page, lower right corner):
+   1. Quality Gate Status
+   1. Lines of Code
+   1. Coverage
 1. In SonarCloud, define new code based on a previous version (Administration / New Code).
-1. Push changes to GitHub. 
+1. Push changes to GitHub.
 
 ### DockerHub integration
 
@@ -152,11 +123,69 @@ assumes that both GitHub and DockerHub share the same account id.
 1. Add DockerHub password to GitHub repository secrets as `DOCKERHUB_PASSWORD`.
 1. Service image will be published to DockerHub on the next release.
 
-How to run...
--------------
+Overview
+--------
+
+> **TODO** - In cloned project, provide here service design and/or diagrams
+
+Usage
+-----
+
+> **TODO** - In cloned project, provide here usage description
+
+Developer Guide
+---------------
+
+### Prerequisites
+
+Project development requires following software being installed on a developer's machine:
+
+Tool                                                             | Version        | Comment
+-----------------------------------------------------------------|----------------|----------------------------------------------------------------------------------------------------------
+[Git](https://git-scm.com/)                                      | `latest`       |
+JDK                                                              | `15`           | [AdoptOpenJDK](https://adoptopenjdk.net/archive.html?variant=openjdk14&jvmVariant=hotspot) is recommended
+IDE                                                              | `latest`       | [IntelliJ IDEA](https://www.jetbrains.com/idea/) is recommended
+[Docker Desktop](https://www.docker.com/products/docker-desktop) | `2.4` or newer |
+
+**Please note:** Project does not depend on IntelliJ IDEA specific features. Feel free to use [Eclipse](https://www.eclipse.org)
+or Notepad instead :)
+
+Optionally, consider installing IDE plugins that improve development experience. Recommended plugins should have
+versions available for most popular IDEs (IntelliJ links below):
+
+Plugin                                                                     | Comment
+---------------------------------------------------------------------------|----------------------------------------------------------------------
+[Lombok](https://plugins.jetbrains.com/plugin/6317-lombok)                 | Support for Lombok generated code
+[MapStruct](https://plugins.jetbrains.com/plugin/10036-mapstruct-support)  | Support for MapStruct generated code
+[Docker](https://plugins.jetbrains.com/plugin/7724-docker)                 | Support for docker-compose (handy when starting application locally)
+[SonarLint](https://plugins.jetbrains.com/plugin/7973-sonarlint)           | Quality feedback on the fly 
+[PlantUML](https://plugins.jetbrains.com/plugin/7017-plantuml-integration) | Helps writing diagrams with PlantUML
+
+**Please note:** Without some of these plugins, IDEs may highlight references to generated code (e.g. Lombok properties
+or MapStruct mappers) as errors. It is annoying but do not affect building or running application.
+
+### Environment
+Development environment is provided as a code by Docker Compose. It may be controlled with standard docker commands
+or using Gradle tasks:
+- `composeUp` - starts dev-env as Docker Compose services (waits until services are up and running)
+- `composeDown` - stops dev-env (all the data is wiped, including database content)
+
+For example, following command starts dev-env:
+```
+./gradlew composeUp 
+```
+
+Once started, following services are available:
+
+Service                                                               | URL                         | Credentials
+----------------------------------------------------------------------|-----------------------------|----------------------------
+[pgAdmin](https://www.pgadmin.org)                                    | http://localhost:81         | `admin@localhost` / `admin`
+[Spring Boot Admin](https://github.com/codecentric/spring-boot-admin) | http://localhost:82         | `admin` / `admin`
+[Swagger UI](https://swagger.io/tools/swagger-ui/)                    | http://localhost:83/swagger | n/a
+[PostgreSQL](https://www.postgresql.org)                              | http://localhost:5432       | `dev` / `dev`
+[Redis](https://redislabs.com)                                        | http://localhost:6379       | n/a
 
 ### Build
-
 Project build is powered by [Gradle wrapper](https://gradle.org) with additional plugins (e.g. `java`, `spring-boot`,
 `docker-compose`). Few most useful build tasks:
 - `clean` - cleans the build
@@ -168,30 +197,7 @@ For example, following command runs a clean build:
 ./gradlew clean build 
 ```
 
-### Dev tools
-
-Development tools are provided as a code by Docker Compose. They may be controlled with standard docker commands
-or using Gradle tasks:
-- `composeUp` - starts development tools as Docker Compose services (waits until services are up and running)
-- `composeDown` - stops development tools (all the data is wiped, including database content)
-
-For example, following command starts development tools:
-```
-./gradlew composeUp 
-```
-
-Once started, following services are available:
-
-Service                                                               | URL                         | Credentials
-----------------------------------------------------------------------|-----------------------------|----------------------------
-[PostgreSQL](https://www.postgresql.org)                              | http://localhost:5432       | `dev` / `dev`
-[Redis](https://redislabs.com)                                        | http://localhost:6379       | NA
-[pgAdmin](https://www.pgadmin.org)                                    | http://localhost:81         | `admin@localhost` / `admin` 
-[Spring Boot Admin](https://github.com/codecentric/spring-boot-admin) | http://localhost:82         | `admin` / `admin`
-[Swagger UI](https://swagger.io/tools/swagger-ui/)                    | http://localhost:83/swagger | NA 
-
-### Application
-
+### Run
 Service, as a regular Spring Boot application may be started locally by running main application class or using Gradle
 task:
 - `bootRun` - starts application (compiles and builds code if needed)
@@ -207,10 +213,11 @@ of the Actuator endpoints, e.g.:
 - http://localhost:8080/actuator/info - general info
 - http://localhost:8080/actuator/health - health status
 
-Project includes [spring-boot-devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools)
+**Please note:** Project includes [spring-boot-devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools)
 "*that can make the application development experience a little more pleasant*", e.g. provides code changes detection
 and automatic restarts.
 
 License
 -------
+
 This software is released under the [MIT](LICENSE) Open Source license.
