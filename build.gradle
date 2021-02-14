@@ -39,19 +39,15 @@ ext {
 	swaggerAnnotationsVersion = "1.5.22"
 	findbugsJsr305Version = "3.0.2"
 	resilience4jVersion = "1.6.1"
-	playtikaVersion = "1.86"
+	playtikaVersion = "2.0.3"
 }
 
 dependencies {
-	// Management
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-	implementation "de.codecentric:spring-boot-admin-starter-client:$springBootAdminVersion"
-
-	// Web
+	// Web Application
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation "org.springdoc:springdoc-openapi-webmvc-core:$springDocVersion"
+	implementation "javax.inject:javax.inject:1"
 
 	// Database
 	implementation "org.springframework.boot:spring-boot-starter-data-jpa"
@@ -84,6 +80,11 @@ dependencies {
 	annotationProcessor "org.mapstruct:mapstruct-processor:$mapStructVersion"
 	implementation "org.mapstruct:mapstruct:$mapStructVersion"
 
+	// Management
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+	implementation "de.codecentric:spring-boot-admin-starter-client:$springBootAdminVersion"
+
 	// General testing
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -108,7 +109,7 @@ jacocoTestReport {
 
 task sunriseSunsetGenerate(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
 	def sourcesRoot = "$buildDir/generated/sources/sunrise-sunset"
-	inputSpec = "$rootDir/specs/sunrise-sunset-spec.yml"
+	inputSpec = "$rootDir/etc/sunrise-sunset-spec.yml"
 	outputDir = sourcesRoot
 	generatorName = "java"
 	library = "resttemplate"
@@ -124,8 +125,13 @@ task sunriseSunsetGenerate(type: org.openapitools.generator.gradle.plugin.tasks.
 
 dockerCompose {
 	projectName = project.name
+	dockerComposeWorkingDirectory = "$rootDir/etc"
 }
 
 bootRun {
-	environment = ["spring.profiles.active": "debug"]
+	environment = [
+			"spring.profiles.active": "debug",
+			"location.latitude": 52.23,
+			"location.longitude": 21.01
+	]
 }
