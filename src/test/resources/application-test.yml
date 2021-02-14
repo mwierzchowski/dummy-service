@@ -13,8 +13,12 @@ spring.redis:
   password: '\${embedded.redis.password}'
 
 # Application specific
-dummy:
+location:
+  latitude: 52.23
+  longitude: 21.01
+checker:
+  cron: '-'
+  path: 'http://localhost:\${wiremock.server.port}/sunrise-sunset'
+publisher:
   init-on-startup: false
-  checker.cron: '-'
-  publisher.cron: '-'
-  sunrise-sunset.path: 'http://localhost:\${wiremock.server.port}/sunrise-sunset'
+  cron: '-'

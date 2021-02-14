@@ -3,9 +3,9 @@ package com.github.mwierzchowski.dummy.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.mwierzchowski.dummy.core.DummyLogger;
 import com.github.mwierzchowski.dummy.core.DummyTask;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
@@ -38,10 +38,10 @@ public class RedisConfig {
 
     @Bean
     RedisMessageListenerContainer messageListenerContainer(RedisConnectionFactory rcf, MessageListenerAdapter mla,
-                                                           Environment env) {
+                                                           @Value("${publisher.channel}") String channel) {
         var container = new RedisMessageListenerContainer();
         container.setConnectionFactory(rcf);
-        container.addMessageListener(mla, new ChannelTopic(env.getRequiredProperty("dummy.publisher.topic")));
+        container.addMessageListener(mla, new ChannelTopic(channel));
         return container;
     }
 }

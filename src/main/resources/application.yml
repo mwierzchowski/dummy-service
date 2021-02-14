@@ -44,7 +44,7 @@ decorator.datasource.p6spy:
 
 # Resilience
 resilience4j.retry.instances:
-  dummy-checker:
+  DummyChecker:
     maxRetryAttempts: 6
     waitDuration: 1s
     enableExponentialBackoff: true
@@ -53,13 +53,10 @@ resilience4j.retry.instances:
       - java.lang.Exception
 
 # Application
-dummy:
+checker:
+  path: 'https://api.sunrise-sunset.org:443'
+  cron: '0 0 0 * * *'
+publisher:
   init-on-startup: true
-  sunrise-sunset.path: 'https://api.sunrise-sunset.org:443'
-  location:
-    latitude: 52.23
-    longitude: 21.01
-  checker.cron: '0 0 0 * * *'
-  publisher:
-    cron: '0 * * * * *'
-    topic: 'sunset-task'
+  cron: '0 * * * * *'
+  channel: 'sunset-task'

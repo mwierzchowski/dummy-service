@@ -13,7 +13,7 @@ import static org.apache.http.HttpStatus.SC_OK
 import static org.apache.http.HttpStatus.SC_SERVICE_UNAVAILABLE
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE
 
-@Integration(properties = ["resilience4j.retry.instances.dummy-checker.maxRetryAttempts=2"])
+@Integration(properties = ["resilience4j.retry.instances.DummyChecker.maxRetryAttempts=2"])
 class DummyCheckerSpec extends Specification {
     @Autowired
     DummyChecker dummyChecker

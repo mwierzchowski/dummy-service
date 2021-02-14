@@ -18,18 +18,23 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class DummyPublisher {
+    public final static String LOCK = "dummy:publisher";
+
     private final DummyChecker checker;
     private final RedisTemplate<String, Object> redis;
 
-    @Value("${dummy.init-on-startup}")
+    @Value("${publisher.init-on-startup}")
     private Boolean initOnStart;
 
+    @Value("${publisher.channel}")
+    private String channel;
+
     @EventListener(classes = ApplicationReadyEvent.class, condition = "@dummyPublisher.initOnStart")
-    @Scheduled(cron = "${dummy.publisher.cron}")
-    @SchedulerLock(name = "dummy-publisher")
+    @Scheduled(cron = "${publisher.cron}")
+    @SchedulerLock(name = LOCK)
     public void publishSunset() {
+        LOG.info("Sending sunset notification");
         var task = new DummyTask("dummy-publisher", checker.todaySunset());
-        redis.convertAndSend("sunset-task", task);
-        LOG.info("Sent sunset notification");
+        redis.convertAndSend(channel, task);
     }
 }
