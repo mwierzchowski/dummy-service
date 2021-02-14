@@ -2,7 +2,9 @@ package com.github.mwierzchowski.dummy
 
 import com.github.mwierzchowski.dummy.core.DummyChecker
 import com.github.tomakehurst.wiremock.matching.UrlPattern
+import org.spockframework.spring.SpringBean
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.ApplicationListener
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -17,6 +19,9 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE
 class DummyCheckerSpec extends Specification {
     @Autowired
     DummyChecker dummyChecker
+
+    @SpringBean(name = "providerEventsListener")
+    ApplicationListener listener = Mock()
 
     @Shared
     UrlPattern apiUrl = urlPathMatching("/sunrise-sunset/.*")
@@ -37,6 +42,7 @@ class DummyCheckerSpec extends Specification {
         then:
         sunset != null
         verify(1, getRequestedFor(apiUrl))
+        1 * listener.onApplicationEvent(_ as DummyChecker.SuccessEvent)
     }
 
     def "Should cache today's sunset time"() {
@@ -53,6 +59,7 @@ class DummyCheckerSpec extends Specification {
         sunset2 != null
         sunset1 == sunset2
         verify(1, getRequestedFor(apiUrl))
+        1 * listener.onApplicationEvent(_ as DummyChecker.SuccessEvent)
     }
 
 
@@ -70,6 +77,7 @@ class DummyCheckerSpec extends Specification {
         sunset1 != null
         sunset2 != null
         verify(2, getRequestedFor(apiUrl))
+        2 * listener.onApplicationEvent(_ as DummyChecker.SuccessEvent)
     }
 
     def "Should retry request when it fails"() {
@@ -89,6 +97,7 @@ class DummyCheckerSpec extends Specification {
         then:
         sunset != null
         verify(2, getRequestedFor(apiUrl))
+        1 * listener.onApplicationEvent(_ as DummyChecker.SuccessEvent)
     }
 
     def "Should throw exception when sunrise-sunset service is down"() {
@@ -103,6 +112,7 @@ class DummyCheckerSpec extends Specification {
         def ex = thrown(RuntimeException)
         ex.getMessage().contains(errorMessage)
         verify(2, getRequestedFor(apiUrl))
+        2 * listener.onApplicationEvent(_ as DummyChecker.FailureEvent)
     }
 
     def "Should throw exception when sunrise-sunset service returns empty response"() {
@@ -115,5 +125,6 @@ class DummyCheckerSpec extends Specification {
         dummyChecker.todaySunset()
         then:
         thrown RuntimeException
+        2 * listener.onApplicationEvent(_ as DummyChecker.FailureEvent)
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.sunrisesunset.api.SunriseSunsetApi;
@@ -24,6 +26,7 @@ public class DummyChecker {
 
     private final SunriseSunsetApi api;
     private final Clock clock;
+    private final ApplicationEventPublisher publisher;
 
     @Value("${location.latitude}")
     private Double latitude;
@@ -34,20 +37,38 @@ public class DummyChecker {
     @Cacheable
     @Retry(name = "DummyChecker")
     public LocalTime todaySunset() {
-        var today = LocalDate.now(clock).toString();
-        LOG.debug("Requesting {} sunset for lat={} and lon={}...", today, latitude, longitude);
-        var sunsetTime = api.sunriseSunset(latitude, longitude, today, 0)
-                .getResults()
-                .getSunset()
-                .atZoneSameInstant(clock.getZone())
-                .toLocalTime();
-        LOG.debug("Today's sunset is {}", sunsetTime);
-        return sunsetTime;
+        LOG.debug("Requesting sunset for lat={} and lon={}...", latitude, longitude);
+        try {
+            var today = LocalDate.now(clock).toString();
+            var sunsetTime = api.sunriseSunset(latitude, longitude, today, 0)
+                    .getResults()
+                    .getSunset()
+                    .atZoneSameInstant(clock.getZone())
+                    .toLocalTime();
+            LOG.debug("Today's sunset is {}", sunsetTime);
+            publisher.publishEvent(new SuccessEvent(sunsetTime));
+            return sunsetTime;
+        } catch (Exception ex) {
+            publisher.publishEvent(new FailureEvent(ex));
+            throw ex;
+        }
     }
 
     @Scheduled(cron = "${checker.cron}")
     @CacheEvict(allEntries = true)
     public void evictCache() {
         LOG.info("Sunset cache evicted");
+    }
+
+    public static class SuccessEvent extends ApplicationEvent {
+        SuccessEvent(LocalTime sunsetTime) {
+            super(sunsetTime);
+        }
+    }
+
+    public static class FailureEvent extends ApplicationEvent {
+        FailureEvent(Exception exception) {
+            super(exception);
+        }
     }
 }
