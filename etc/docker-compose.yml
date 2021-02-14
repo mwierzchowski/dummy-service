@@ -23,7 +23,7 @@ services:
       - 6379:6379
 
   pg-admin4:
-    image: dpage/pgadmin4:latest
+    image: dpage/pgadmin4:4.30
     networks:
       dev_network:
     ports:
