@@ -17,6 +17,8 @@ spring.boot.admin.client:
   username: admin
   password: admin
 
+spring.mvc.format.date: 'yyyy-MM-dd'
+
 # Logging levels
 logging.level:
   root: WARN
