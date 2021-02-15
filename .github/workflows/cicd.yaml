@@ -4,7 +4,7 @@ env:
   ORGANIZATION: ${{ github.repository_owner }}
   PROJECT: ${{ github.event.repository.name }}
   IMAGE: ${{ github.repository_owner }}/${{ github.event.repository.name }}
-  CANDIDATE: rc
+  CANDIDATE: temp
   JAVA: 1.15
 
 jobs:
