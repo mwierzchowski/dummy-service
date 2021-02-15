@@ -87,7 +87,7 @@ Project Setup From Template
 
 1. [Create a new repository from this template](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
 1. Import/clone project to IDE
-1. Update `build.gradle`
+1. Modify `build.gradle`
    1. Change application group and description.
    1. Reload Gradle project.
 1. Update README
